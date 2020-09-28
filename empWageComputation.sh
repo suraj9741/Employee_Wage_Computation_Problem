@@ -5,19 +5,25 @@ Wage_per_hour=20
 Day_hour=8
 Part_time=4
 Total_Wage=1
-if [ $a -eq 0 ]
-then
-	echo "Present Full time employee"
-	Total_Wage=$(($Wage_per_hour*$Day_hour))
-	echo "Total Wage : " $Total_Wage
-elif [ $a -eq 1 ]
-then
-	echo "Present Part time employee"
-        Total_Wage=$(($Wage_per_hour*$Part_time))
-        echo "Total Wage : " $Total_Wage
-
-else
-	echo "Absent"
-	Total_Wage=0
-	 echo "Total Wage : " $Total_Wage
-fi
+day=1
+while [ $day -lt 21 ]
+do
+	a=$((RANDOM%3))
+	case $a in
+		1)
+			echo "Present Full time employee"
+			empHrs=8
+		;;
+		2)
+			echo "Present Part time employee"
+			empHrs=4
+		;;
+		*)
+			echo "Absent"
+			empHrs=0
+		;;
+	esac
+		Total_Wage=$(($empHrs*$Wage_per_hour))
+		echo "$day day $Total_Wage"
+	day=$((day+1))
+done
