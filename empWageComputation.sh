@@ -25,7 +25,13 @@ do
 		hours=$((hours+empHrs))
 		Total_Wage=$(($empHrs*$Wage_per_hour))
 		Total_Month_Wage=$((Total_Month_Wage+Total_Wage))
+		Month_Wage[$((day-1))]=$Total_Month_Wage
 	day=$((day+1))
 done
 echo "Total Month Wages : $Total_Month_Wage"
 echo "Total hours : $hours"
+for((i=0;i<${#Month_Wage[@]};i++))
+do
+	echo "$((i+1)) : ${Month_Wage[$i]}"
+done
+#echo "${Month_Wage[@]}"
