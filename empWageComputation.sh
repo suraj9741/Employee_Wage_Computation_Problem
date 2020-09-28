@@ -1,2 +1,2 @@
 #!/bash/bin -x
-echo "this is checking program"
+echo "Welcome to Employee Wage Computation Program"
